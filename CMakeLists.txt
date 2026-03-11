@@ -4,3 +4,4 @@ project(TP16_GR1 C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(EXO3 main_exo3.c)
+add_executable(EXO4 main_exo4.c)
