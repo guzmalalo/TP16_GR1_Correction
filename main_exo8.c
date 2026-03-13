@@ -27,16 +27,23 @@ void ajouter(Coord* tab[6], int* tLog, int tPhy) {
 
     // Ajouter la nouvelle coordonnée dans le tableau
     tab[*tLog] = ptemp;
+
+    // Modification de la taille logique (+1)
     (*tLog)++;
 }
 
 void afficher(Coord* tab[6], int tLog) {
-
+    printf("\n----Liste de points----\n");
+    for (int i = 0; i < tLog; ++i) {
+        printf("Point %d (%d, %d)\n", i, tab[i]->x, tab[i]->y);
+    }
+    printf("\n----Fin de la liste----\n");
 }
 
 int main() {
     // Définition des variables
     Coord* tab[6] ={0}; // tableau de pointeurs de Coordonées
+
     int nbCoord = 0 ;   // c'est la taille logique
     int nbCoordMax = 6; // c'est la taille physique
     int choix =0;
@@ -51,14 +58,21 @@ int main() {
 
         switch (choix) {
             case 1:
-                printf("Choix 1\n");
+                ajouter(tab,&nbCoord, 6);
                 break;
             case 2:
-                printf("Choix 2\n");
+                afficher(tab, nbCoord);
                 break;
             default:
                 break;
         }
     } while (choix !=3);
+
+    // liberation
+    for (int i = 0; i < nbCoord; ++i) {
+        free(tab[i]);
+    }
+
+
     return 0;
 }
